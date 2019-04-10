@@ -1,0 +1,63 @@
+
+Indlæs fil
+
+
+Find og udskriv løbsresultaterne for alle italienske cykelryttere over 30 år. I denne opgave er det OK at lave en funktion som blot printer resultaterne direkte.
+
+Skriv en funktion som returnerer et array af alle de danske ryttere, som har gennemført et eller flere af de fire cykelløb, enten med en placering eller med OTL. Kald funktionen, og udskriv disse danske ryttere samt hvor mange løb hver af de danske ryttere har gennemført. Bemærk, at hver rytter kun ønskes udskrevet én gang.
+
+Udskriv de 10 ryttere som har opnået flest point. Sorter primært rytterne efter antal point. Ved pointlighed sorteres rytterne alfabetisk efter efternavn. (Efternavnet er den del af rytterens navn som er skrevet med udelukkende store bogstaver. Bemærk at efternavnet også kan indeholde mellemrum og specialtegn).
+
+I denne opgave fokuseres på de to cykelløb Paris Roubaix og Amstel Gold Race. Skriv en funktion som finder den rytter, som har gennemført begge disse løb, og som har den mindste samlede køretid i de to løb. Funktionen skal have rytteren og den samlede køretid som outputparametre. Kald funktionen og udskriv rytterens navn og den samlede køretid (i timer, minutter og sekunder).
+
+Beregn gennemsnitsalderen (af typen double) blandt alle de ryttere, som har opnået en topti placering i et eller flere cykelløb. Vær sikker på at ryttere, som har et top-ti resultat i to eller flere af de fire løb, ikke indgår mere én gang i gennemsnitsberegningen.
+
+
+
+/*
+Struct til deltager og sepereat struct til løb - tildel hver delttager med løb (løb[74] og løb [120] til lars)
+
+Newline igennem filen for at finde hvor mange linjer (deltager der er)
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+/*----------------------Defines--------------------*/
+#define hej 123
+#define _AMOUNT_PARTICIPANT 790
+#define _TEST 45
+
+
+/* --------------- #include "topAfMain.h" -------- */
+
+typedef struct time{
+    int second;
+    int minute;
+    int hour;
+} structTime;
+
+typedef struct participant
+{
+    char nameParticipant[100];
+    int age;
+    char nation[100];
+    
+    char nameRace[100]; 
+    char nameTeam[100];
+    int placement;
+    
+    structTime finishTime;
+} structParticipant;
+
+/*----------------STRUCTS-----------------*/
+
+/*-------prototyper---------*/
+
+void opgave1(structParticipant *_participant);
+void findAndPrint(char *_nation, structParticipant *_person);
+
+void loadStruct(structParticipant *);
+structParticipant assignStruct(FILE *filedata);
